@@ -1,88 +1,88 @@
-# Proposal: 添加项目详情页面
+# Proposal: Add Project Detail Page
 
-## 需求摘要
+## Requirement Summary
 
-在项目列表中支持进入项目详情页，集中展示单个项目的基本信息（名称、描述、状态、时间等），并与现有布局保持一致。
+Support entering project detail page from project list, centrally display basic information of a single project (name, description, status, time, etc.), and maintain consistency with existing layout.
 
-## 背景与动机
+## Background and Motivation
 
-- 用户当前只能在列表页看到项目卡片，无法查看完整信息，需要单独的详情入口。
-- 项目管理系统已有列表页与项目数据，但缺少详情页与路由，导致查看详情需依赖其他入口或后续功能。
-- 本次变更填补「从列表到详情」的闭环，为后续项目成员、设置等功能提供页面基础。
+- Users can currently only see project cards on the list page, unable to view complete information, need a separate detail entry point.
+- The project management system has list pages and project data, but lacks detail pages and routes, making it necessary to rely on other entry points or subsequent features to view details.
+- This change fills the "from list to detail" loop, providing a page foundation for subsequent features like project members and settings.
 
-## 目标与成功标准
+## Goals and Success Criteria
 
-- 在项目上下文中提供集中的项目详情页面。
-- 用户从列表点击后可进入详情页，在一屏内看到项目完整基本信息。
-- 详情页布局与现有页面（如资产页）一致，复用顶部栏与边栏。
+- Provide a centralized project detail page within the project context.
+- Users can enter the detail page from the list and see complete basic project information on one screen.
+- Detail page layout is consistent with existing pages (e.g., asset page), reusing top bar and sidebar.
 
-**成功标准**：
+**Success Criteria**:
 
-- 用户能从列表跳转到详情页，且 URL 含项目 ID。
-- 详情页正确展示名称、描述、创建时间、更新时间、状态等字段。
-- 项目不存在或无权限时，有明确提示与返回入口。
+- Users can navigate from list to detail page with project ID in URL.
+- Detail page correctly displays name, description, creation time, update time, status and other fields.
+- When project doesn't exist or user lacks permission, there are clear prompts and return entry points.
 
-## 范围与边界
+## Scope and Boundaries
 
-### In Scope（本次包含）
+### In Scope (Included This Time)
 
-- 项目详情路由与占位页（如 `/projects/:id`）。
-- 从项目列表到详情页的跳转（点击进入、浏览器前进/后退）。
-- 项目基本信息展示（名称、描述、创建/更新时间、状态等），数据来自现有 API。
+- Project detail route and placeholder page (e.g., `/projects/:id`).
+- Navigation from project list to detail page (click to enter, browser forward/back).
+- Project basic information display (name, description, creation/update time, status, etc.), data from existing API.
 
-### Out of Scope（本次不包含）
+### Out of Scope (Not Included This Time)
 
-- 项目成员管理、项目设置 — 后续功能。
-- 移动端适配 — 后续优化。
-- 项目详情内的编辑、删除等操作 — 后续功能。
+- Project member management, project settings — future features.
+- Mobile adaptation — future optimization.
+- Edit, delete and other operations within project detail — future features.
 
-## 用户/系统场景
+## User/System Scenarios
 
-### 场景 1：从列表进入并查看项目详情
+### Scenario 1: Enter and View Project Detail from List
 
-- **谁**：已登录且可访问项目列表的用户。
-- **何时/条件**：在项目列表页，已加载出项目列表。
-- **做什么**：点击某个项目的「查看详情」或卡片，进入该项目详情页。
-- **得到什么**：看到该项目名称、描述、状态、创建/更新时间等信息，布局与现有系统一致。
+- **Who**: Logged-in users with access to project list.
+- **When/Condition**: On project list page, project list has loaded.
+- **What**: Click "View Details" or card of a project to enter that project's detail page.
+- **Result**: See the project's name, description, status, creation/update time and other information, layout consistent with existing system.
 
-### 场景 2：通过 URL 直接访问项目详情
+### Scenario 2: Access Project Detail via Direct URL
 
-- **谁**：已登录用户（已知项目 ID，如从邮件/分享链接进入）。
-- **何时/条件**：在浏览器输入或打开含项目 ID 的详情 URL。
-- **做什么**：打开详情页，系统根据 ID 拉取并展示项目信息。
-- **得到什么**：与场景 1 相同的详情展示；若 ID 无效或无权限，看到明确提示和返回入口。
+- **Who**: Logged-in user (knows project ID, e.g., from email/shared link).
+- **When/Condition**: Enter or open detail URL containing project ID in browser.
+- **What**: Open detail page, system fetches and displays project information based on ID.
+- **Result**: Same detail display as Scenario 1; if ID is invalid or lacks permission, see clear prompt and return entry point.
 
-### 场景 3：项目不存在或加载失败
+### Scenario 3: Project Doesn't Exist or Load Failed
 
-- **谁**：同上。
-- **何时/条件**：访问不存在的项目 ID，或接口报错/超时。
-- **做什么**：系统展示错误状态（如 404、无权限、网络错误）。
-- **得到什么**：友好提示文案、重试或返回列表的入口，不暴露技术细节。
+- **Who**: Same as above.
+- **When/Condition**: Access non-existent project ID, or API reports error/timeout.
+- **What**: System displays error state (e.g., 404, no permission, network error).
+- **Result**: Friendly prompt text, retry or return to list entry point, without exposing technical details.
 
-## 约束与假设
+## Constraints and Assumptions
 
-### 约束
+### Constraints
 
-- 详情页需与现有页面布局一致（共享顶部栏、边栏），不单独做一套布局。
-- 路由与前端技术栈需与项目现有规范一致（如 TanStack Router）。
-- 数据来源为现有项目 API，不新增后端数据模型；若 API 暂无详情接口，需在本需求内明确并纳入实现范围。
+- Detail page needs to be consistent with existing page layout (shared top bar, sidebar), not a separate layout.
+- Routes and frontend tech stack need to be consistent with existing project specifications (e.g., TanStack Router).
+- Data source is existing project API, no new backend data model; if API doesn't have detail endpoint yet, needs to be clarified and included in implementation scope within this requirement.
 
-### 假设
+### Assumptions
 
-- 项目列表与详情使用同一套权限模型，列表可见即可进入详情。
-- 项目「基本信息」指：名称、描述、状态、创建时间、更新时间等现有模型字段；不包含成员、设置等。
-- 当前仅考虑桌面端布局；移动端为后续优化。
+- Project list and detail use the same permission model, visible in list means can enter detail.
+- Project "basic information" refers to: name, description, status, creation time, update time and other existing model fields; doesn't include members, settings, etc.
+- Currently only considering desktop layout; mobile is future optimization.
 
-## 名词与术语
+## Terms and Terminology
 
-| 术语/缩写 | 含义 | 备注 |
+| Term/Abbreviation | Meaning | Notes |
 |----------|------|------|
-| 项目详情页 | 以单个项目为主体的展示页，展示该项目基本信息 | 对应路由如 `/projects/:id` |
-| 项目列表页 | 展示多个项目卡片的页面 | 对应路由如 `/projects` |
-| 基本信息 | 名称、描述、状态、创建/更新时间等 | 来自现有 Project 模型，不含成员、设置等 |
+| Project Detail Page | Display page with single project as main subject, showing basic project info | Corresponding route e.g., `/projects/:id` |
+| Project List Page | Page displaying multiple project cards | Corresponding route e.g., `/projects` |
+| Basic Information | Name, description, status, creation/update time, etc. | From existing Project model, doesn't include members, settings, etc. |
 
-## 参考与链接
+## References and Links
 
-- 现有项目列表与路由：路由 `/projects`。
-- 布局参考：与资产页等保持一致（如 `/mushroom/project/asset`）。
-- 设计稿或截图可放在 `.iasospec/changes/<change-id>/images` 并在本处引用。
+- Existing project list and routes: Route `/projects`.
+- Layout reference: Consistent with asset page, etc. (e.g., `/mushroom/project/asset`).
+- Design files or screenshots can be placed in `.iasospec/changes/<change-id>/images` and referenced here.

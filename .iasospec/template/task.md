@@ -1,60 +1,60 @@
-# T-XXX 一句话简介
-# T-XXX 一句话简介 (deps: T-001, T-002)  # 如有依赖关系，在标题中标注
+# T-XXX One-line Summary
+# T-XXX One-line Summary (deps: T-001, T-002)  # If dependencies exist, mark in title
 
-## 需求描述
+## Requirement Description
 
-[详细描述需求背景、目标、功能点等(这是最重要的部分，描述应该详细且清楚，不能一句话带过)]
-[可包含链接和图片引用]
+[Detailed description of requirement background, goals, features, etc. (This is the most important part, description should be detailed and clear, not just one sentence)]
+[Can include links and image references]
 
-**需求类型**：[Infrastructure/Feature/Bugfix/Refactor/Enhancement]
+**Requirement Type**: [Infrastructure/Feature/Bugfix/Refactor/Enhancement]
 
-**涉及领域**：[前端/后端/全栈]
+**Involved Domain**: [Frontend/Backend/Full-stack]
 
-[如果需要，可以添加更详细的说明，包括：
-- 功能的具体实现要求
-- 用户交互流程
-- 数据流转过程
-- 业务规则和约束
+[If needed, can add more detailed explanations including:
+- Specific implementation requirements for features
+- User interaction flows
+- Data flow processes
+- Business rules and constraints
 ]
 
-## 相关指引
+## Relevant Guidelines
 
-**前端规则:**
-- [规则文档路径及说明]
+**Frontend Rules:**
+- [Rule document path and description]
 
-**后端规则:**
-- [规则文档路径及说明]
+**Backend Rules:**
+- [Rule document path and description]
 
-**前端Code Point:**
-- [代码文件路径及说明]
+**Frontend Code Points:**
+- [Code file path and description]
 
-**前端路由:**
-- [路由路径及说明，例如：`/projects/:id` - 项目详情路由]
+**Frontend Routes:**
+- [Route path and description, e.g.: `/projects/:id` - Project detail route]
 
-**后端Code Point:**
-- [代码文件路径及说明]
+**Backend Code Points:**
+- [Code file path and description]
 
-**其他:**
-- [其他相关资源，例如：设计稿链接、API 文档、第三方库文档等]
+**Others:**
+- [Other relevant resources, e.g.: design file links, API documentation, third-party library documentation, etc.]
 
-## 注意点
+## Notes
 
-- [注意事项 1，例如：技术难点、边界情况、可能影响的其他功能模块]
-- [注意事项 2，例如：性能考虑、兼容性要求、安全要求]
-- [注意事项 3，例如：需要特别注意的实现细节]
+- [Note 1, e.g.: technical difficulties, edge cases, other functional modules that may be affected]
+- [Note 2, e.g.: performance considerations, compatibility requirements, security requirements]
+- [Note 3, e.g.: implementation details that need special attention]
 
 ## Scenario
 
 ### Scenario 1:
-    [描述至少一个使用场景，说明用户如何使用此功能，以及系统的预期行为]
+    [Describe at least one use case, explaining how users use this feature and expected system behavior]
 
-    **场景描述：**
-    [详细描述场景，包括前置条件、操作步骤、预期结果]
+    **Scenario Description:**
+    [Detailed description of scenario, including preconditions, operation steps, expected results]
 
 ## Checklist
 
-- [ ] C-001 [功能完成检查点 1，有明确的验收标准]
-- [ ] C-002 [功能完成检查点 2，覆盖主要功能点]
-- [ ] C-003 [功能完成检查点 3，覆盖边界情况]
-- [ ] C-004 [功能完成检查点 4，覆盖错误处理]
-- [ ] C-005 [功能完成检查点 5，覆盖测试要求]
+- [ ] C-001 [Feature completion checkpoint 1, with clear acceptance criteria]
+- [ ] C-002 [Feature completion checkpoint 2, covering main functionality]
+- [ ] C-003 [Feature completion checkpoint 3, covering edge cases]
+- [ ] C-004 [Feature completion checkpoint 4, covering error handling]
+- [ ] C-005 [Feature completion checkpoint 5, covering testing requirements]

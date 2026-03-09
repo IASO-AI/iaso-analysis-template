@@ -5,6 +5,6 @@ category: IasoSpec
 tags: [iasospec, apply]
 ---
 
-读取并遵循 `.iasospec/command/apply.md` 中的完整指令来执行任务。
+Read and follow the complete instructions in `.iasospec/command/apply.md` to execute the task.
 
 $ARGUMENTS

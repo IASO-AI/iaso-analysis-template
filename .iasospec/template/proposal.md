@@ -1,77 +1,77 @@
-# Proposal: [变更标题]
+# Proposal: [Change Title]
 
-## 需求摘要
+## Requirement Summary
 
-[用一两句话概括整次变更，便于检索和评审。可与 change-id 呼应。]
+[Summarize the entire change in one or two sentences for easy retrieval and review. Can correspond with change-id.]
 
-## 背景与动机
+## Background and Motivation
 
-[说明为什么做这次变更]
-[解决谁的问题、当前缺口或痛点]
-[可简述相关现有能力与不足]
+[Explain why this change is being made]
+[Whose problem it solves, current gaps or pain points]
+[Can briefly describe relevant existing capabilities and deficiencies]
 
-## 目标与成功标准
+## Goals and Success Criteria
 
-[希望达成的结果；可量化的尽量写清（例如「用户能在一屏内完成 X」）]
+[Desired outcomes; make quantifiable ones as clear as possible (e.g., "Users can complete X on one screen")]
 
-- [目标 1]
-- [目标 2]
-- [目标 3]
+- [Goal 1]
+- [Goal 2]
+- [Goal 3]
 
-**成功标准**（可选）：
-- [可验证的完成标准 1]
-- [可验证的完成标准 2]
+**Success Criteria** (Optional):
+- [Verifiable completion criteria 1]
+- [Verifiable completion criteria 2]
 
-## 范围与边界
+## Scope and Boundaries
 
-### In Scope（本次包含）
+### In Scope (Included This Time)
 
-- [功能/模块/能力 1]
-- [功能/模块/能力 2]
+- [Feature/Module/Capability 1]
+- [Feature/Module/Capability 2]
 
-### Out of Scope（本次不包含）
+### Out of Scope (Not Included This Time)
 
-- [明确不做的内容 1] — [原因或后续计划]
-- [明确不做的内容 2] — [原因或后续计划]
+- [Explicitly excluded content 1] — [Reason or future plan]
+- [Explicitly excluded content 2] — [Reason or future plan]
 
-## 用户/系统场景
+## User/System Scenarios
 
-[主要使用场景：谁、在什么情况下、完成什么、得到什么结果。为后续 task 的 Scenario 提供来源。]
+[Main use cases: who, under what conditions, completes what, gets what result. Provides source for subsequent task Scenarios.]
 
-### 场景 1：[场景名称]
+### Scenario 1: [Scenario Name]
 
-- **谁**：[角色/用户类型]
-- **何时/条件**：[前置条件或触发情境]
-- **做什么**：[主要操作或流程]
-- **得到什么**：[预期结果或价值]
+- **Who**: [Role/User type]
+- **When/Condition**: [Preconditions or trigger context]
+- **What**: [Main operation or process]
+- **Result**: [Expected outcome or value]
 
-### 场景 2：[场景名称]
+### Scenario 2: [Scenario Name]
 
-- **谁**：[角色/用户类型]
-- **何时/条件**：[前置条件或触发情境]
-- **做什么**：[主要操作或流程]
-- **得到什么**：[预期结果或价值]
+- **Who**: [Role/User type]
+- **When/Condition**: [Preconditions or trigger context]
+- **What**: [Main operation or process]
+- **Result**: [Expected outcome or value]
 
-## 约束与假设
+## Constraints and Assumptions
 
-### 约束
+### Constraints
 
-- [业务规则、合规、性能、兼容性等约束 1]
-- [约束 2]
+- [Business rules, compliance, performance, compatibility constraints 1]
+- [Constraint 2]
 
-### 假设
+### Assumptions
 
-- [对需求理解的关键假设 1]
-- [关键假设 2]
+- [Key assumption about requirement understanding 1]
+- [Key assumption 2]
 
-## 名词与术语
+## Terms and Terminology
 
-| 术语/缩写 | 含义 | 备注 |
+| Term/Abbreviation | Meaning | Notes |
 |----------|------|------|
-| [术语 1] | [定义] | [与现有系统概念对应等] |
-| [术语 2] | [定义] | [与现有系统概念对应等] |
+| [Term 1] | [Definition] | [Corresponds to existing system concept, etc.] |
+| [Term 2] | [Definition] | [Corresponds to existing system concept, etc.] |
 
-## 参考与链接
+## References and Links
 
-- [设计稿、文档、现有功能路径等]
-- [图片可放在 `.iasospec/changes/<id>/images` 并在本处引用]
+- [Design files, documents, existing feature paths, etc.]
+- [Images can be placed in `.iasospec/changes/<id>/images` and referenced here]

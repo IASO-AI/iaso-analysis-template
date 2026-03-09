@@ -1,67 +1,67 @@
 ## Context
 
-项目管理系统目前缺少项目详情页面，用户无法查看项目的详细信息。用户需要在项目列表页面点击项目后，能够进入一个专门的项目详情页面，查看项目的基本信息。
+The project management system currently lacks a project detail page, users cannot view detailed information about a project. Users need to be able to click on a project in the project list page and enter a dedicated project detail page to view the project's basic information.
 
-当前系统已有：
-- 项目列表页面（`/projects`），展示项目的基本信息卡片
-- 项目数据模型（`Project`），包含项目的基本字段
-- 基础的 API 端点用于获取项目列表
+Current system has:
+- Project list page (`/projects`), displaying basic information cards of projects
+- Project data model (`Project`), containing basic fields of projects
+- Basic API endpoints for getting project list
 
-缺失的功能：
-- 项目详情页面和路由
-- 项目基本信息展示功能
+Missing functionality:
+- Project detail page and route
+- Project basic information display feature
 
 ## Goals / Non-Goals
 
 ### Goals
 
-- 在项目上下文中提供集中的项目详情页面
-- 展示项目的完整信息（名称、描述、创建时间、状态等）
-- 保持与现有页面布局的一致性（共享顶部栏和边栏）
+- Provide a centralized project detail page within the project context
+- Display complete project information (name, description, creation time, status, etc.)
+- Maintain consistency with existing page layout (shared top bar and sidebar)
 
 ### Non-Goals
 
-- 项目成员管理功能（后续功能）
-- 项目设置功能（后续功能）
-- 移动端适配（后续优化）
+- Project member management feature (future feature)
+- Project settings feature (future feature)
+- Mobile adaptation (future optimization)
 
 ## Decisions
 
 ### 1. Page Layout Consistency
 
-**决策**：使用与资产页面相同的布局结构（`/mushroom/project/asset`）
+**Decision**: Use the same layout structure as the asset page (`/mushroom/project/asset`)
 
-**理由**：用户已经熟悉资产页面布局。重用共享的顶部栏和边栏提供了一致的体验并减少了开发工作。
+**Rationale**: Users are already familiar with the asset page layout. Reusing the shared top bar and sidebar provides a consistent experience and reduces development effort.
 
-**考虑的替代方案**：
-- 基于模态的项目详情：被拒绝，因为项目详情足够复杂，需要完整页面
-- 独立的布局结构：被拒绝，因为会增加维护成本并破坏用户体验的一致性
+**Alternatives Considered**:
+- Modal-based project details: Rejected because project details are complex enough to require a full page
+- Independent layout structure: Rejected because it would increase maintenance cost and break user experience consistency
 
 ### 2. Routing Strategy
 
-**决策**：使用 TanStack Router 配置路由，路径为 `/projects/:id`
+**Decision**: Use TanStack Router to configure routing with path `/projects/:id`
 
-**理由**：
-- TanStack Router 是项目标准的路由解决方案
-- RESTful 风格的 URL 路径清晰易懂
-- 支持类型安全的路由参数
+**Rationale**:
+- TanStack Router is the project's standard routing solution
+- RESTful style URL path is clear and easy to understand
+- Supports type-safe route parameters
 
-**考虑的替代方案**：
-- 使用 Hash Router：被拒绝，因为不利于 SEO 和用户体验
-- 使用查询参数传递项目 ID：被拒绝，因为路径参数更符合 RESTful 规范
+**Alternatives Considered**:
+- Use Hash Router: Rejected because it's not good for SEO and user experience
+- Use query parameters to pass project ID: Rejected because path parameters conform better to RESTful specifications
 
 ### 3. Data Fetching Strategy
 
-**决策**：使用 `createAutoKeyMiniQueryClient` 工具管理器进行数据获取，配合客户端缓存
+**Decision**: Use `createAutoKeyMiniQueryClient` utility manager for data fetching with client-side caching
 
-**理由**：
-- 保持与 Mushroom 功能其余部分的架构一致性
-- 使用项目的标准工具管理器，包含内置的状态管理（loading、data、error）
-- 支持自动缓存和重新验证
+**Rationale**:
+- Maintain architectural consistency with the rest of Mushroom features
+- Use project's standard utility manager with built-in state management (loading, data, error)
+- Support automatic caching and revalidation
 
-**考虑的替代方案**：
-- 自定义 DataManager：被拒绝，因为工具管理器已能满足需求，无需重复造轮子
-- 直接使用 fetch：被拒绝，因为缺少统一的状态管理和错误处理
+**Alternatives Considered**:
+- Custom DataManager: Rejected because utility manager already meets requirements, no need to reinvent the wheel
+- Direct use of fetch: Rejected because it lacks unified state management and error handling
 
 ## Data Model
 
@@ -80,7 +80,7 @@ class Project(UUIDModelMixin, TimeStampModelMixin):
 
 ### New/Modified Model
 
-无需修改现有数据模型，所有功能基于现有模型实现。
+No need to modify existing data models, all functionality is implemented based on existing models.
 
 ### API Response Format
 
@@ -88,12 +88,12 @@ class Project(UUIDModelMixin, TimeStampModelMixin):
 // GET /api/projects/:id
 {
   "id": "123e4567-e89b-12d3-a456-426614174000",
-  "name": "项目名称",
-  "description": "项目描述",
+  "name": "Project Name",
+  "description": "Project Description",
   "status": "active",
   "owner": {
     "id": "user-id",
-    "name": "所有者姓名",
+    "name": "Owner Name",
     "email": "owner@example.com"
   },
   "created_at": "2024-01-01T00:00:00Z",
@@ -116,84 +116,84 @@ feature/project-detail/
 ├── api/
 │   └── project.api.ts                       # API client functions
 └── component/
-    └── project-basic-info.tsx               # 项目基本信息展示
+    └── project-basic-info.tsx               # Project basic information display
 ```
 
 ```
 api/projects/
 ├── views.py                                  # ProjectViewSet
-└── serializers.py                            # 序列化器
+└── serializers.py                            # Serializers
 ```
 
 ## Architecture Patterns
 
-- **Manager Pattern**：使用 ViewController 管理页面状态和业务逻辑
-  - `ProjectDetailViewController` 协调页面逻辑
-  - 使用 `createAutoKeyMiniQueryClient` 进行数据获取
-  - 通过 Context API 提供 ViewController 实例
+- **Manager Pattern**: Use ViewController to manage page state and business logic
+  - `ProjectDetailViewController` coordinates page logic
+  - Use `createAutoKeyMiniQueryClient` for data fetching
+  - Provide ViewController instance through Context API
 
-- **Separation of Concerns**：
-  - API 层：纯函数，负责数据请求
-  - Manager 层：业务逻辑和状态管理
-  - Component 层：UI 展示和用户交互
-  - Page 层：页面布局和路由集成
+- **Separation of Concerns**:
+  - API Layer: Pure functions, responsible for data requests
+  - Manager Layer: Business logic and state management
+  - Component Layer: UI display and user interaction
+  - Page Layer: Page layout and route integration
 
 ## Risks / Trade-offs
 
 ### Risk: Cache Invalidation
 
-**风险**：客户端缓存可能导致数据不一致，特别是在多标签页场景下。
+**Risk**: Client-side caching may cause data inconsistency, especially in multi-tab scenarios.
 
-**缓解措施**：
-- 实现合理的缓存过期时间（如 5 分钟）
-- 使用 TanStack Query 的重新验证机制
+**Mitigation**:
+- Implement reasonable cache expiration time (e.g., 5 minutes)
+- Use TanStack Query's revalidation mechanism
 
 ### Trade-off: Data Freshness vs Performance
 
-**决策**：优先考虑性能，使用缓存策略减少 API 调用。
+**Decision**: Prioritize performance, use caching strategy to reduce API calls.
 
-**影响**：
-- 优点：减少服务器负载，提升用户体验
-- 缺点：数据可能不是最新的
-- 权衡：通过合理的缓存过期时间平衡数据新鲜度和性能
+**Impact**:
+- Pros: Reduce server load, improve user experience
+- Cons: Data may not be the latest
+- Trade-off: Balance data freshness and performance through reasonable cache expiration time
 
 ## Open Questions
 
-1. **项目详情页面是否需要支持标签页（Tabs）？**
-   - 假设：当前不需要，后续功能扩展时再考虑
-   - 待确认：是否需要预留标签页结构
+1. **Does the project detail page need to support tabs?**
+   - Assumption: Not needed currently, will be considered when extending features later
+   - To be confirmed: Whether to reserve tab structure
 
-2. **项目不存在时的错误处理方式**
-   - 假设：显示友好的错误提示，提供返回项目列表的链接
-   - 待确认：是否需要记录错误日志
+2. **Error handling when project doesn't exist**
+   - Assumption: Display friendly error message, provide link to return to project list
+   - To be confirmed: Whether to log errors
 
 ## Migration Plan
 
 ### Steps
 
 1. **Phase 1: Infrastructure (T-001)**
-   - 创建路由配置和占位页面
-   - 建立基础的页面结构
+   - Create route configuration and placeholder page
+   - Establish basic page structure
 
 2. **Phase 2: Navigation (T-002)**
-   - 实现从项目列表到详情页的跳转
-   - 测试路由和导航功能
+   - Implement navigation from project list to detail page
+   - Test routing and navigation functionality
 
 3. **Phase 3: Basic Info Display (T-003)**
-   - 实现项目基本信息展示
-   - 集成 API 调用和数据展示
+   - Implement project basic information display
+   - Integrate API calls and data display
 
 ### Rollback
 
-- **代码回滚**：通过 Git 回滚到之前的版本
-- **数据库变更**：无需数据库变更，无需回滚
-- **API 变更**：如果添加了新的 API 端点，可以通过 URLconf 禁用
-- **路由变更**：删除路由配置文件即可禁用页面访问
-- **功能降级**：如果出现问题，可以临时禁用项目详情页面，用户仍可使用项目列表
+- **Code Rollback**: Roll back to previous version via Git
+- **Database Changes**: No database changes needed, no rollback required
+- **API Changes**: If new API endpoints are added, they can be disabled via URLconf
+- **Route Changes**: Delete route configuration file to disable page access
+- **Feature Degradation**: If issues occur, project detail page can be temporarily disabled, users can still use project list
 
 ## References
 
-- 项目架构文档 - 前端架构规范
-- MVC 架构模式
-- 工具管理器使用指南
-- 后端开发规范
+- Project Architecture Documentation - Frontend Architecture Specification
+- MVC Architecture Pattern
+- Utility Manager Usage Guide
+- Backend Development Specification

@@ -1,110 +1,110 @@
 ## Context
 
-[描述当前系统的上下文和背景]
-[说明为什么需要这个变更]
-[描述相关的现有实现和约束条件]
+[Describe the current system context and background]
+[Explain why this change is needed]
+[Describe relevant existing implementations and constraints]
 
 ## Goals / Non-Goals
 
 ### Goals
 
-- [明确的目标 1]
-- [明确的目标 2]
-- [明确的目标 3]
+- [Clear goal 1]
+- [Clear goal 2]
+- [Clear goal 3]
 
 ### Non-Goals
 
-- [明确不在本次变更范围内的目标 1]
-- [明确不在本次变更范围内的目标 2]
-- [说明为什么这些不在范围内]
+- [Goal explicitly not in scope of this change 1]
+- [Goal explicitly not in scope of this change 2]
+- [Explain why these are not in scope]
 
 ## Decisions
 
-### 1. [决策主题 1]
+### 1. [Decision Topic 1]
 
-**决策**：[具体的决策内容]
+**Decision**: [Specific decision content]
 
-**理由**：[为什么做出这个决策，包括技术、业务或用户体验方面的考虑]
+**Rationale**: [Why this decision was made, including technical, business, or user experience considerations]
 
-**考虑的替代方案**：
-- [替代方案 1]：被拒绝，因为 [原因]
-- [替代方案 2]：被拒绝，因为 [原因]
+**Alternatives Considered**:
+- [Alternative 1]: Rejected because [reason]
+- [Alternative 2]: Rejected because [reason]
 
-### 2. [决策主题 2]
+### 2. [Decision Topic 2]
 
-**决策**：[具体的决策内容]
+**Decision**: [Specific decision content]
 
-**理由**：[为什么做出这个决策]
+**Rationale**: [Why this decision was made]
 
-**考虑的替代方案**：
-- [替代方案]：被拒绝，因为 [原因]
+**Alternatives Considered**:
+- [Alternative]: Rejected because [reason]
 
 ## Data Model
 
 ### Existing Model (No Changes Required)
-[如果使用现有数据模型，描述现有模型结构]
+[If using existing data model, describe the existing model structure]
 
 ### New/Modified Model
-[如果需要新的或修改的数据模型，描述新的结构]
+[If new or modified data model is needed, describe the new structure]
 
 ### API Response Format
-[如果需要新的 API，描述请求和响应格式]
+[If new API is needed, describe request and response formats]
 
 ## Component Structure
 
-[描述前端组件结构，使用目录树格式]
+[Describe frontend component structure using directory tree format]
 
-[如果需要，添加后端模块结构]
+[Add backend module structure if needed]
 
 ## Architecture Patterns
 
-[描述使用的架构模式和设计模式]
+[Describe architecture patterns and design patterns used]
 
-- [模式 1]：[说明为什么使用这个模式]
-- [模式 2]：[说明如何应用这个模式]
+- [Pattern 1]: [Explain why this pattern is used]
+- [Pattern 2]: [Explain how this pattern is applied]
 
 ## Risks / Trade-offs
 
-### Risk: [风险名称]
+### Risk: [Risk Name]
 
-**风险**：[描述潜在的风险]
+**Risk**: [Describe potential risk]
 
-**缓解措施**：
-- [缓解措施 1]
-- [缓解措施 2]
+**Mitigation**:
+- [Mitigation measure 1]
+- [Mitigation measure 2]
 
-### Trade-off: [权衡点名称]
+### Trade-off: [Trade-off Name]
 
-**决策**：[描述权衡的决策]
+**Decision**: [Describe the trade-off decision]
 
-**影响**：[这个决策的影响和限制]
+**Impact**: [The impact and limitations of this decision]
 
 ## Open Questions
 
-1. **[开放问题 1]**
-   - [问题的描述]
-   - [假设或待确认的内容]
+1. **[Open Question 1]**
+   - [Description of the question]
+   - [Assumptions or items to be confirmed]
 
-2. **[开放问题 2]**
-   - [问题的描述]
-   - [假设或待确认的内容]
+2. **[Open Question 2]**
+   - [Description of the question]
+   - [Assumptions or items to be confirmed]
 
 ## Migration Plan
 
 ### Steps
 
-1. [迁移步骤 1]
-2. [迁移步骤 2]
-3. [迁移步骤 3]
+1. [Migration step 1]
+2. [Migration step 2]
+3. [Migration step 3]
 
 ### Rollback
 
-- [回滚方案 1]
-- [回滚方案 2]
-- [说明如何回滚，包括数据库变更、代码回滚等]
+- [Rollback plan 1]
+- [Rollback plan 2]
+- [Explain how to rollback, including database changes, code rollback, etc.]
 
 ## References
 
-- [相关文档链接 1]
-- [相关文档链接 2]
-- [相关代码文件路径]
+- [Related document link 1]
+- [Related document link 2]
+- [Related code file path]

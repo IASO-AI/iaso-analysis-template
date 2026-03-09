@@ -1,36 +1,36 @@
 # IASO Clinic AI File Processor Project
 
-## 项目概述
+## Project Overview
 
-IASO Clinic 医疗诊所管理系统 - AI 文件智能处理扩展模块
+IASO Clinic Medical Clinic Management System - AI File Intelligent Processing Extension Module
 
-## 变更历史
+## Change History
 
-| Change ID | 标题 | 状态 | 创建时间 |
+| Change ID | Title | Status | Created |
 |-----------|------|------|----------|
-| implement-ai-file-processor | 实现 AI 文件智能处理平台 | 提案中 | 2025-02-09 |
+| implement-ai-file-processor | Implement AI File Intelligent Processing Platform | In Proposal | 2025-02-09 |
 
-## 活跃变更
+## Active Changes
 
 ### implement-ai-file-processor
 
-- **proposal.md**: 需求提案文档
-- **design.md**: 架构设计文档
-- **tasks.md**: 任务拆分文档
+- **proposal.md**: Requirement proposal document
+- **design.md**: Architecture design document
+- **tasks.md**: Task breakdown document
 
-**任务列表**:
-- T-001: 后端基础设施搭建
-- T-002: Kimi AI 服务封装 (deps: T-001)
-- T-003: 文件重命名异步任务实现 (deps: T-001, T-002)
-- T-004: 完整性检测异步任务实现 (deps: T-001, T-002)
-- T-005: 前端基础布局实现
-- T-006: 文件重命名页面实现 (deps: T-005)
-- T-007: 完整性检测页面实现 (deps: T-005)
-- T-008: 任务列表页面实现 (deps: T-005)
-- T-009: 集成测试与优化 (deps: T-003, T-004, T-006, T-007, T-008)
+**Task List**:
+- T-001: Backend Infrastructure Setup
+- T-002: Kimi AI Service Wrapper (deps: T-001)
+- T-003: File Rename Async Task Implementation (deps: T-001, T-002)
+- T-004: Integrity Check Async Task Implementation (deps: T-001, T-002)
+- T-005: Frontend Basic Layout Implementation
+- T-006: File Rename Page Implementation (deps: T-005)
+- T-007: Integrity Check Page Implementation (deps: T-005)
+- T-008: Task List Page Implementation (deps: T-005)
+- T-009: Integration Testing and Optimization (deps: T-003, T-004, T-006, T-007, T-008)
 
-## 技术栈
+## Tech Stack
 
-- **前端**: React + TypeScript + Vite + TanStack Router + Tailwind CSS v4 + shadcn/ui
-- **后端**: Django REST Framework + MySQL + Redis + Celery
-- **AI 服务**: Kimi K2.5 API (Moonshot AI)
+- **Frontend**: React + TypeScript + Vite + TanStack Router + Tailwind CSS v4 + shadcn/ui
+- **Backend**: Django REST Framework + MySQL + Redis + Celery
+- **AI Service**: Kimi K2.5 API (Moonshot AI)

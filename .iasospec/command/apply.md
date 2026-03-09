@@ -1,50 +1,50 @@
-# 执行开发需求
+# Execute Development Requirements
 
-## 前提条件
+## Prerequisites
 
-- 读取 `.iasospec/changes` 目录下的直接子目录，每一个子目录都是一个change，目录名为 change-id
-- 用户必须指定 change-id，用户可选指定 Task 序号
-- 如果用户没有指定 change-id，需要列出所有change，提醒用户选择，在确定change-id之前不能继续
-- 用户可以在指定 change-id 的同时指定需要完成的Task编号（如 `T-001`、`T-001, T-002`），如果不指定则是全部任务
+- Read the direct subdirectories under `.iasospec/changes`, each subdirectory is a change, the directory name is the change-id
+- User must specify change-id, user can optionally specify Task number
+- If user does not specify change-id, list all changes and prompt user to select, cannot continue until change-id is confirmed
+- User can specify Task numbers while specifying change-id (e.g., `T-001`, `T-001, T-002`), if not specified then all tasks
 
-## 执行流程
+## Execution Flow
 
-### 第一步：读取并解析需求
+### Step 1: Read and Parse Requirements
 
-1. **读取任务文件**
-   - 读取 `.iasospec/changes/<change-id>` 下的 `proposal.md`、`task.md` 和 `design.md`（如存在）
-   - `proposal.md` 提供变更的整体上下文（需求摘要、目标、范围、用户场景等），便于理解任务背景
-   - 若上述文件不存在，提示用户先使用 specify 命令创建需求文档
+1. **Read Task Files**
+   - Read `proposal.md`, `task.md` and `design.md` (if exists) under `.iasospec/changes/<change-id>`
+   - `proposal.md` provides the overall context of the change (requirement summary, goals, scope, user scenarios, etc.), helpful for understanding task background
+   - If the above files do not exist, prompt user to use specify command to create requirement documents first
 
-2. **解析用户指定的需求**
-   - 识别用户输入的需求编号（T-XXX）
-   - 支持单个需求（如 `T-001`）或多个需求（如 `T-001, T-002` 或 `T-001 T-002`）
-   - 在文档中查找对应的需求部分
+2. **Parse User Specified Requirements**
+   - Identify requirement numbers (T-XXX) in user input
+   - Support single requirement (e.g., `T-001`) or multiple requirements (e.g., `T-001, T-002` or `T-001 T-002`)
+   - Find corresponding requirement sections in the document
 
-3. **提取需求信息**
-   - 识别依赖关系，不同的需求之间如果存在依赖关系，需要保证执行顺序不违背依赖关系
-   - 读取具体需求提到的所有指引文件（前端规则、后端规则、Code Point、路由等）和注意点
+3. **Extract Requirement Information**
+   - Identify dependencies, if different requirements have dependencies, ensure execution order does not violate dependency relationships
+   - Read all guidance files (frontend rules, backend rules, Code Points, routes, etc.) and notes mentioned in specific requirements
 
-### 第二步：执行开发任务
+### Step 2: Execute Development Tasks
 
-1. **阅读相关指引**
-   - 读取需求提到的相关指引文档、图片、PR（如果给的是链接，请使用gh cli）等
-   - 理解相关代码模块和架构
-   - 如果需要额外的约定或说明，请参考 `.iasospec/project.md`（位于 `.iasospec/` 目录内——如果看不到，请运行 `ls .iasospec`）。
+1. **Read Relevant Guidelines**
+   - Read guidance documents, images, PRs mentioned in requirements (if links are provided, use gh cli)
+   - Understand relevant code modules and architecture
+   - If additional conventions or explanations are needed, refer to `.iasospec/project.md` (located in `.iasospec/` directory - if not visible, run `ls .iasospec`).
 
-2. **实现功能**
-   - 按照需求描述和 Checklist 逐项实现
-   - 遵循项目架构和代码规范
+2. **Implement Features**
+   - Implement according to requirement description and Checklist items
+   - Follow project architecture and code conventions
 
-### 第三步：检查任务完成情况
+### Step 3: Check Task Completion Status
 
-1. **检查 Scenarios**
+1. **Check Scenarios**
 
-- 从代码层面检查Task的全部 `Scenario` 是否没问题
+- Check from code level if all `Scenario` of the Task are correct
 
-2. **完成 Checklist 项**
-   - 每完成一个 Checklist 项，在 `.iasospec/changes/<change-id>/task.md` 中更新状态：`- [x]`
-   - 保持未完成项为：`- [ ]`
+2. **Complete Checklist Items**
+   - After completing each Checklist item, update status in `.iasospec/changes/<change-id>/task.md`: `- [x]`
+   - Keep incomplete items as: `- [ ]`
 
-3. **确认完成**
-   - 所有 Checklist 项完成后，标记需求已完成
+3. **Confirm Completion**
+   - After all Checklist items are completed, mark the requirement as completed

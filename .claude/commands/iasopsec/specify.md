@@ -5,6 +5,6 @@ category: IasoSpec
 tags: [iasospec, specify]
 ---
 
-读取并遵循 `.iasospec/command/specify.md` 中的完整指令来执行任务。
+Read and follow the complete instructions in `.iasospec/command/specify.md` to execute the task.
 
 $ARGUMENTS

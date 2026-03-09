@@ -1,252 +1,252 @@
-# T-001 创建项目详情页面路由和占位页面
+# T-001 Create Project Detail Page Route and Placeholder Page
 
-## 需求描述
+## Requirement Description
 
-**Infrastructure：创建路由和占位页面**
+**Infrastructure: Create Route and Placeholder Page**
 
-为项目详情功能创建路由配置和占位页面组件，建立后续功能开发的基础框架。
+Create route configuration and placeholder page components for project detail functionality, establishing the basic framework for subsequent feature development.
 
-**需求类型**：Infrastructure
+**Requirement Type**: Infrastructure
 
-**涉及领域**：前端
+**Involved Domain**: Frontend
 
-### 1. 路由配置
+### 1. Route Configuration
 
-使用 TanStack Router 配置路由，路径为 `/projects/:id`，其中 `:id` 为 UUID 格式的项目 ID。
+Use TanStack Router to configure routing with path `/projects/:id`, where `:id` is a UUID format project ID.
 
-**路由参数校验规则**：
-- 项目 ID 必须是有效的 UUID v4 格式（如 `123e4567-e89b-12d3-a456-426614174000`）
-- 无效格式的 ID 应在路由层面被拒绝，重定向到 404 页面
+**Route Parameter Validation Rules**:
+- Project ID must be valid UUID v4 format (e.g., `123e4567-e89b-12d3-a456-426614174000`)
+- Invalid format IDs should be rejected at route level, redirected to 404 page
 
-### 2. 占位页面布局
+### 2. Placeholder Page Layout
 
-创建占位页面组件，采用以下布局结构：
+Create placeholder page component with the following layout structure:
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
-│  [← 返回列表]                                    页面标题区域  │
+│  [← Return to List]                              Page Title  │
 ├─────────────────────────────────────────────────────────────┤
 │                                                             │
-│                    页面内容区域（居中）                        │
+│                    Page Content Area (Centered)             │
 │                                                             │
 │              ┌─────────────────────────┐                    │
-│              │   🏗️ 页面建设中...       │                    │
-│              │   项目 ID: {projectId}   │                    │
+│              │   🏗️ Page Under Construction... │                    │
+│              │   Project ID: {projectId}   │                    │
 │              └─────────────────────────┘                    │
 │                                                             │
 └─────────────────────────────────────────────────────────────┘
 ```
 
-**布局要求**：
-- 页面宽度：最大 1200px，居中显示
-- 顶部导航区域：高度 64px，包含返回按钮和页面标题
-- 内容区域：垂直居中显示占位信息
-- 整体样式与现有页面（如项目列表页）保持一致
+**Layout Requirements**:
+- Page width: Maximum 1200px, centered display
+- Top navigation area: Height 64px, contains back button and page title
+- Content area: Vertically centered placeholder information
+- Overall style consistent with existing pages (e.g., project list page)
 
-### 3. 组件结构
+### 3. Component Structure
 
 ```
 project-detail/
-├── route.tsx                    # 路由配置文件
+├── route.tsx                    # Route configuration file
 ├── page/
-│   └── ProjectDetailPage.tsx    # 页面入口组件
+│   └── ProjectDetailPage.tsx    # Page entry component
 └── component/
-    └── PagePlaceholder.tsx      # 占位内容组件
+    └── PagePlaceholder.tsx      # Placeholder content component
 ```
 
-## 相关指引
+## Relevant Guidelines
 
-**前端规则:**
-- 项目架构文档 - 了解路由配置和页面组件结构
-- 目录结构文档 - 了解功能目录组织规范
+**Frontend Rules:**
+- Project Architecture Documentation - Understand route configuration and page component structure
+- Directory Structure Documentation - Understand feature directory organization specifications
 
-**前端Code Point:**
-- `router/` - 路由配置文件位置
-- `feature/project-detail/` - 项目详情页面代码位置（待创建）
+**Frontend Code Points:**
+- `router/` - Route configuration file location
+- `feature/project-detail/` - Project detail page code location (to be created)
 
-**前端路由:**
-- `/projects/:id` - 项目详情路由
+**Frontend Routes:**
+- `/projects/:id` - Project detail route
 
-## 注意点
+## Notes
 
-- 路由参数需要正确配置，支持项目 ID（UUID 格式）
-- 占位页面应该包含基础的布局结构，与现有页面保持一致
-- 需要考虑路由验证和错误处理（如项目不存在的情况）
+- Route parameters need to be configured correctly to support project ID (UUID format)
+- Placeholder page should include basic layout structure, consistent with existing pages
+- Need to consider route validation and error handling (e.g., when project doesn't exist)
 
 ## Scenario
 
-### Scenario 1: 用户通过 URL 访问项目详情页面
+### Scenario 1: User Accesses Project Detail Page via URL
 
-    **场景描述：**
-    - **前置条件**：用户已登录，知道项目的 ID
-    - **操作步骤**：
-      1. 用户在浏览器地址栏输入 `/projects/123e4567-e89b-12d3-a456-426614174000`
-      2. 系统解析路由参数，提取项目 ID
-      3. 渲染项目详情占位页面
-    - **预期结果**：
-      - 页面成功加载，显示基础布局
-      - URL 中的项目 ID 被正确解析
-      - 页面显示占位内容（如"项目详情页面"）
+    **Scenario Description:**
+    - **Precondition**: User is logged in, knows project ID
+    - **Operation Steps**:
+      1. User enters `/projects/123e4567-e89b-12d3-a456-426614174000` in browser address bar
+      2. System parses route parameter, extracts project ID
+      3. Renders project detail placeholder page
+    - **Expected Result**:
+      - Page loads successfully, displays basic layout
+      - Project ID in URL is correctly parsed
+      - Page displays placeholder content (e.g., "Project Detail Page")
 
 ## Checklist
 
-- [ ] C-001 路由配置正确，可以通过 URL 访问项目详情页面
-- [ ] C-002 占位页面组件创建完成，包含基础布局结构
-- [ ] C-003 页面可以正确接收和解析路由参数（项目 ID）
-- [ ] C-004 路由验证正确，无效的项目 ID 格式会被拒绝
-- [ ] C-005 页面布局与现有页面风格保持一致
+- [ ] C-001 Route configuration correct, can access project detail page via URL
+- [ ] C-002 Placeholder page component created, includes basic layout structure
+- [ ] C-003 Page can correctly receive and parse route parameters (project ID)
+- [ ] C-004 Route validation correct, invalid project ID format will be rejected
+- [ ] C-005 Page layout consistent with existing page style
 
 ---
 
-# T-002 实现项目详情页面跳转功能 (deps: T-001)
+# T-002 Implement Project Detail Page Navigation Feature (deps: T-001)
 
-## 需求描述
+## Requirement Description
 
-**Feature：实现页面跳转**
+**Feature: Implement Page Navigation**
 
-在项目列表页面添加跳转到项目详情页面的功能，支持多种触发方式和完整的浏览器历史记录支持。
+Add navigation from project list page to project detail page functionality, supporting multiple trigger methods and complete browser history support.
 
-**需求类型**：Feature
+**Requirement Type**: Feature
 
-**涉及领域**：前端
+**Involved Domain**: Frontend
 
-### 1. 跳转触发方式
+### 1. Navigation Trigger Methods
 
-在项目列表的每个项目卡片/行上支持以下跳转方式：
+Support the following navigation methods on each project card/row in project list:
 
-| 触发方式 | 行为 | 备注 |
+| Trigger Method | Behavior | Notes |
 |---------|------|------|
-| 点击项目卡片 | 跳转到项目详情页 | 整个卡片区域可点击 |
-| 点击"查看详情"按钮 | 跳转到项目详情页 | 按钮位于卡片右下角 |
-| 右键菜单 → "在新标签页打开" | 新标签页打开详情页 | 可选功能 |
+| Click project card | Navigate to project detail page | Entire card area is clickable |
+| Click "View Details" button | Navigate to project detail page | Button located at bottom right of card |
+| Right-click menu → "Open in new tab" | Open detail page in new tab | Optional feature |
 
-### 2. 项目卡片 UI 更新
+### 2. Project Card UI Update
 
 ```
 ┌──────────────────────────────────────────────────────────┐
-│  项目卡片（可点击区域）                                     │
+│  Project Card (Clickable Area)                           │
 │ ┌─────────────────────────────────────────────────────┐ │
-│ │  📁 项目名称                           [状态标签]     │ │
-│ │  项目描述文本，最多显示两行，超出部分...               │ │
+│ │  📁 Project Name                         [Status Tag]  │ │
+│ │  Project description text, max 2 lines, overflow... │ │
 │ │                                                     │ │
-│ │  创建时间: 2024-01-15        [查看详情 →] ← 按钮     │ │
+│ │  Created: 2024-01-15        [View Details →] ← Button│ │
 │ └─────────────────────────────────────────────────────┘ │
 └──────────────────────────────────────────────────────────┘
-         ↑ 鼠标悬停时显示 hover 效果（背景色变化 + cursor: pointer）
+         ↑ Hover effect on mouse hover (background change + cursor: pointer)
 ```
 
-**交互细节**：
-- 鼠标悬停时：卡片背景色变为 `bg-gray-50`，显示阴影效果
-- "查看详情"按钮：悬停时显示下划线，颜色变为主题色
-- 点击时：按钮显示 loading 状态（可选，用于慢网络情况）
+**Interaction Details**:
+- On mouse hover: Card background color changes to `bg-gray-50`, shows shadow effect
+- "View Details" button: Shows underline on hover, color changes to theme color
+- On click: Button shows loading state (optional, for slow network conditions)
 
-### 3. 导航实现
+### 3. Navigation Implementation
 
-使用 TanStack Router 的 `useNavigate` hook 进行编程式导航：
+Use TanStack Router's `useNavigate` hook for programmatic navigation:
 
 ```typescript
-// 示例代码
+// Example code
 const navigate = useNavigate();
 navigate({ to: '/projects/$id', params: { id: project.id } });
 ```
 
-**导航要求**：
-- 使用 `push` 模式，保留浏览器历史记录
-- 跳转前不需要预加载数据（由目标页面负责）
-- 支持 `Ctrl/Cmd + Click` 在新标签页打开
+**Navigation Requirements**:
+- Use `push` mode, preserve browser history
+- No need to preload data before navigation (target page is responsible)
+- Support `Ctrl/Cmd + Click` to open in new tab
 
-### 4. 状态保持
+### 4. State Preservation
 
-当用户从详情页返回列表页时：
-- 列表页的滚动位置应被恢复（通过 TanStack Router 的 scroll restoration 功能）
-- 之前的筛选条件和搜索关键词应保持不变（依赖路由状态或 URL 参数）
+When user returns to list page from detail page:
+- List page scroll position should be restored (via TanStack Router's scroll restoration feature)
+- Previous filter conditions and search keywords should be preserved (dependent on route state or URL parameters)
 
-## 相关指引
+## Relevant Guidelines
 
-**前端规则:**
-- 项目架构文档 - 了解页面导航和路由跳转规范
+**Frontend Rules:**
+- Project Architecture Documentation - Understand page navigation and route navigation specifications
 
-**前端Code Point:**
-- `feature/project-list/` - 项目列表页面代码
-- `feature/project-detail/` - 项目详情页面代码
+**Frontend Code Points:**
+- `feature/project-list/` - Project list page code
+- `feature/project-detail/` - Project detail page code
 
-**前端路由:**
-- `/projects` - 项目列表路由
-- `/projects/:id` - 项目详情路由
+**Frontend Routes:**
+- `/projects` - Project list route
+- `/projects/:id` - Project detail route
 
-## 注意点
+## Notes
 
-- 跳转时需要使用正确的导航方法，避免页面刷新
-- 需要考虑项目列表页面的加载状态，避免在数据未加载完成时跳转
-- 跳转后需要保持项目列表的滚动位置（如果用户返回）
+- Need to use correct navigation method during navigation, avoid page refresh
+- Need to consider project list page loading state, avoid navigating when data hasn't loaded
+- After navigation, need to preserve project list scroll position (if user returns)
 
 ## Scenario
 
-### Scenario 1: 用户从项目列表跳转到项目详情
+### Scenario 1: User Navigates from Project List to Project Detail
 
-    **场景描述：**
-    - **前置条件**：用户在项目列表页面，已加载项目列表数据
-    - **操作步骤**：
-      1. 用户点击某个项目的"查看详情"按钮
-      2. 系统获取该项目的 ID
-      3. 使用路由导航跳转到 `/projects/{projectId}`
-    - **预期结果**：
-      - 页面平滑跳转到项目详情页面
-      - URL 正确更新为 `/projects/{projectId}`
-      - 浏览器历史记录正确更新，支持后退操作
+    **Scenario Description:**
+    - **Precondition**: User is on project list page, project list data has loaded
+    - **Operation Steps**:
+      1. User clicks "View Details" button of a project
+      2. System gets the project's ID
+      3. Uses route navigation to go to `/projects/{projectId}`
+    - **Expected Result**:
+      - Page smoothly navigates to project detail page
+      - URL correctly updates to `/projects/{projectId}`
+      - Browser history correctly updates, supports back operation
 
-### Scenario 2: 用户使用浏览器后退按钮返回列表
+### Scenario 2: User Uses Browser Back Button to Return to List
 
-    **场景描述：**
-    - **前置条件**：用户已从项目列表跳转到项目详情页面
-    - **操作步骤**：
-      1. 用户点击浏览器的后退按钮
-    - **预期结果**：
-      - 页面返回到项目列表
-      - 项目列表的滚动位置和筛选状态得到保持（如果可能）
+    **Scenario Description:**
+    - **Precondition**: User has navigated from project list to project detail page
+    - **Operation Steps**:
+      1. User clicks browser's back button
+    - **Expected Result**:
+      - Page returns to project list
+      - Project list scroll position and filter state are preserved (if possible)
 
 ## Checklist
 
-- [ ] C-001 项目列表页面可以点击跳转到项目详情页面
-- [ ] C-002 跳转时正确传递项目 ID
-- [ ] C-003 浏览器前进后退功能正常工作
-- [ ] C-004 跳转过程中显示适当的加载状态
-- [ ] C-005 无效的项目 ID 跳转会显示错误提示
+- [ ] C-001 Project list page can click to navigate to project detail page
+- [ ] C-002 Project ID is correctly passed during navigation
+- [ ] C-003 Browser forward/back functions work properly
+- [ ] C-004 Appropriate loading state is shown during navigation
+- [ ] C-005 Invalid project ID navigation shows error prompt
 
 ---
 
-# T-003 实现项目基本信息展示功能 (deps: T-001, T-002)
+# T-003 Implement Project Basic Information Display Feature (deps: T-001, T-002)
 
-## 需求描述
+## Requirement Description
 
-**Feature：项目基本信息展示**
+**Feature: Project Basic Information Display**
 
-在项目详情页面展示完整的项目基本信息，包括数据获取、UI 展示和各种状态处理。
+Display complete project basic information on project detail page, including data fetching, UI display, and various state handling.
 
-**需求类型**：Feature
+**Requirement Type**: Feature
 
-**涉及领域**：全栈
+**Involved Domain**: Full-stack
 
-### 1. 页面整体布局
+### 1. Overall Page Layout
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
-│  顶部导航栏                                                      │
-│  [← 返回项目列表]                              [编辑] [删除]      │
+│  Top Navigation Bar                                             │
+│  [← Return to Project List]                      [Edit] [Delete]│
 ├─────────────────────────────────────────────────────────────────┤
 │                                                                 │
 │  ┌─────────────────────────────────────────────────────────┐   │
-│  │  项目信息卡片                                             │   │
+│  │  Project Info Card                                       │   │
 │  │                                                          │   │
-│  │  项目名称                               [状态标签]         │   │
+│  │  Project Name                               [Status Tag] │   │
 │  │  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━      │   │
 │  │                                                          │   │
-│  │  项目描述                                                 │   │
-│  │  这里是项目的详细描述内容，可以是多行文本...                │   │
+│  │  Project Description                                     │   │
+│  │  Here is the detailed description of the project...     │   │
 │  │                                                          │   │
 │  │  ┌──────────────┬──────────────┬──────────────┐          │   │
-│  │  │  📅 创建时间  │  📅 更新时间  │  👤 创建者    │          │   │
-│  │  │  2024-01-15  │  2024-01-20  │  张三         │          │   │
+│  │  │  📅 Created   │  📅 Updated   │  👤 Creator   │          │   │
+│  │  │  2024-01-15  │  2024-01-20  │  John         │          │   │
 │  │  └──────────────┴──────────────┴──────────────┘          │   │
 │  │                                                          │   │
 │  └─────────────────────────────────────────────────────────┘   │
@@ -254,45 +254,45 @@ navigate({ to: '/projects/$id', params: { id: project.id } });
 └─────────────────────────────────────────────────────────────────┘
 ```
 
-### 2. 各字段展示规范
+### 2. Field Display Specifications
 
-| 字段 | 位置 | 样式 | 格式化规则 |
+| Field | Position | Style | Formatting Rules |
 |-----|------|------|----------|
-| 项目名称 | 卡片顶部左侧 | `text-2xl font-bold text-gray-900` | 原样显示，最长 100 字符 |
-| 状态标签 | 卡片顶部右侧 | 圆角标签，不同状态不同颜色 | 见下方状态颜色表 |
-| 项目描述 | 名称下方 | `text-base text-gray-600 leading-relaxed` | 支持多行，无字符限制 |
-| 创建时间 | 底部信息区左 | `text-sm text-gray-500` | `YYYY-MM-DD HH:mm` 格式 |
-| 更新时间 | 底部信息区中 | `text-sm text-gray-500` | `YYYY-MM-DD HH:mm` 格式 |
-| 创建者 | 底部信息区右 | `text-sm text-gray-500` | 显示用户名称 |
+| Project Name | Top left of card | `text-2xl font-bold text-gray-900` | Display as-is, max 100 characters |
+| Status Tag | Top right of card | Rounded tag, different colors for different statuses | See status color table below |
+| Project Description | Below name | `text-base text-gray-600 leading-relaxed` | Supports multiple lines, no character limit |
+| Created Time | Bottom info area left | `text-sm text-gray-500` | `YYYY-MM-DD HH:mm` format |
+| Updated Time | Bottom info area center | `text-sm text-gray-500` | `YYYY-MM-DD HH:mm` format |
+| Creator | Bottom info area right | `text-sm text-gray-500` | Display user name |
 
-**状态标签颜色映射**：
+**Status Tag Color Mapping**:
 
-| 状态值 | 显示文本 | 背景色 | 文字色 |
+| Status Value | Display Text | Background Color | Text Color |
 |-------|---------|-------|-------|
-| `draft` | 草稿 | `bg-gray-100` | `text-gray-600` |
-| `active` | 进行中 | `bg-blue-100` | `text-blue-700` |
-| `completed` | 已完成 | `bg-green-100` | `text-green-700` |
-| `archived` | 已归档 | `bg-yellow-100` | `text-yellow-700` |
+| `draft` | Draft | `bg-gray-100` | `text-gray-600` |
+| `active` | In Progress | `bg-blue-100` | `text-blue-700` |
+| `completed` | Completed | `bg-green-100` | `text-green-700` |
+| `archived` | Archived | `bg-yellow-100` | `text-yellow-700` |
 
-### 3. 数据加载状态处理
+### 3. Data Loading State Handling
 
-**状态定义**：
+**State Definition**:
 
 ```typescript
-type LoadingState = 
-  | { status: 'idle' }           // 初始状态
-  | { status: 'loading' }        // 加载中
-  | { status: 'success'; data: Project }  // 加载成功
-  | { status: 'error'; error: ErrorType } // 加载失败
+type LoadingState =
+  | { status: 'idle' }           // Initial state
+  | { status: 'loading' }        // Loading
+  | { status: 'success'; data: Project }  // Load success
+  | { status: 'error'; error: ErrorType } // Load failed
 ```
 
-#### 3.1 Loading 状态 UI
+#### 3.1 Loading State UI
 
-当 `status === 'loading'` 时，显示骨架屏（Skeleton）而非 loading spinner：
+When `status === 'loading'`, display skeleton screen instead of loading spinner:
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
-│  项目信息卡片 (骨架屏)                                        │
+│  Project Info Card (Skeleton)                               │
 │                                                             │
 │  ████████████████████████              [██████]             │
 │  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━       │
@@ -306,136 +306,136 @@ type LoadingState =
 └─────────────────────────────────────────────────────────────┘
 ```
 
-**骨架屏要求**：
-- 使用 `animate-pulse` 动画效果
-- 骨架块颜色：`bg-gray-200`
-- 布局结构与实际内容保持一致
+**Skeleton Screen Requirements**:
+- Use `animate-pulse` animation effect
+- Skeleton block color: `bg-gray-200`
+- Layout structure consistent with actual content
 
-#### 3.2 Error 状态处理
+#### 3.2 Error State Handling
 
-根据错误类型显示不同的 UI：
+Display different UI based on error type:
 
-**a) 项目不存在 (404)**
-
-```
-┌─────────────────────────────────────────────────────────────┐
-│                                                             │
-│                      📭 项目不存在                            │
-│                                                             │
-│           该项目可能已被删除或您输入的链接有误                   │
-│                                                             │
-│                    [返回项目列表]                             │
-│                                                             │
-└─────────────────────────────────────────────────────────────┘
-```
-
-**b) 权限不足 (403)**
+**a) Project Not Found (404)**
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
 │                                                             │
-│                      🔒 无访问权限                            │
+│                      📭 Project Not Found                   │
 │                                                             │
-│              您没有权限查看此项目，请联系项目管理员               │
+│           This project may have been deleted or you entered an incorrect link            │
 │                                                             │
-│                    [返回项目列表]                             │
+│                    [Return to Project List]                 │
 │                                                             │
 └─────────────────────────────────────────────────────────────┘
 ```
 
-**c) 网络错误 / 服务器错误 (5xx / NetworkError)**
+**b) Insufficient Permission (403)**
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
 │                                                             │
-│                      ⚠️ 加载失败                             │
+│                      🔒 No Access Permission                │
 │                                                             │
-│             网络连接异常，请检查网络后重试                      │
+│              You don't have permission to view this project, please contact the project administrator              │
 │                                                             │
-│                [重试] ← 主按钮    [返回列表] ← 次按钮          │
+│                    [Return to Project List]                 │
 │                                                             │
 └─────────────────────────────────────────────────────────────┘
 ```
 
-**重试机制**：
-- 点击"重试"按钮后，按钮显示 loading 状态
-- 重试时重新调用 API 获取数据
-- 最多允许手动重试 3 次，之后隐藏重试按钮
+**c) Network Error / Server Error (5xx / NetworkError)**
 
-## 相关指引
+```
+┌─────────────────────────────────────────────────────────────┐
+│                                                             │
+│                      ⚠️ Loading Failed                      │
+│                                                             │
+│             Network connection error, please check your network and try again            │
+│                                                             │
+│                [Retry] ← Primary Button    [Return to List] ← Secondary Button          │
+│                                                             │
+└─────────────────────────────────────────────────────────────┘
+```
 
-**前端规则:**
-- 项目架构文档 - 了解 Manager 模式和数据获取规范
-- 工具管理器文档 - 了解工具管理器使用方式
+**Retry Mechanism**:
+- After clicking "Retry" button, button shows loading state
+- Retry calls API to fetch data again
+- Maximum 3 manual retries allowed, after which retry button is hidden
 
-**后端规则:**
-- API 设计规范文档 - 了解 API 设计规范
+## Relevant Guidelines
 
-**前端Code Point:**
-- `feature/project-detail/manager/project-detail-view-controller.tsx` - 视图控制器
-- `feature/project-detail/api/project.api.ts` - API 客户端
+**Frontend Rules:**
+- Project Architecture Documentation - Understand Manager pattern and data fetching specifications
+- Utility Manager Documentation - Understand utility manager usage
 
-**后端Code Point:**
-- `api/projects.py` - 项目详情 API 端点
-- `models/project.py` - 项目数据模型
+**Backend Rules:**
+- API Design Specification Documentation - Understand API design specifications
 
-**其他:**
-- 设计稿链接：`/project-detail-basic-info.png`
+**Frontend Code Points:**
+- `feature/project-detail/manager/project-detail-view-controller.tsx` - View controller
+- `feature/project-detail/api/project.api.ts` - API client
 
-## 注意点
+**Backend Code Points:**
+- `api/projects.py` - Project detail API endpoint
+- `models/project.py` - Project data model
 
-- 需要处理数据加载状态和失败情况
-- API 调用需要考虑错误处理和重试机制
-- 项目不存在时（404）需要显示友好的错误提示
-- 需要考虑权限控制（用户是否有权限查看该项目）
-- 数据格式需要与后端 API 响应格式保持一致
+**Others:**
+- Design file link: `/project-detail-basic-info.png`
+
+## Notes
+
+- Need to handle data loading state and failure cases
+- API calls need to consider error handling and retry mechanism
+- When project doesn't exist (404), need to display friendly error prompt
+- Need to consider permission control (whether user has permission to view the project)
+- Data format needs to be consistent with backend API response format
 
 ## Scenario
 
-### Scenario 1: 用户查看项目基本信息
+### Scenario 1: User Views Project Basic Information
 
-    **场景描述：**
-    - **前置条件**：用户已跳转到项目详情页面，项目 ID 有效
-    - **操作步骤**：
-      1. 页面加载时自动调用 API 获取项目详情
-      2. 显示加载状态（loading spinner）
-      3. API 返回成功后，展示项目基本信息
-    - **预期结果**：
-      - 加载过程中显示加载状态
-      - 数据加载成功后，正确展示项目名称、描述、创建时间等信息
-      - 信息展示格式美观，符合设计规范
+    **Scenario Description:**
+    - **Precondition**: User has navigated to project detail page, project ID is valid
+    - **Operation Steps**:
+      1. Page automatically calls API to get project details on load
+      2. Display loading state (loading spinner)
+      3. After API returns successfully, display project basic information
+    - **Expected Result**:
+      - Loading state is shown during loading
+      - After data loads successfully, project name, description, creation time and other info are displayed correctly
+      - Information display format is aesthetically pleasing, conforms to design specifications
 
-### Scenario 2: 项目不存在的情况
+### Scenario 2: Project Doesn't Exist Case
 
-    **场景描述：**
-    - **前置条件**：用户访问一个不存在的项目 ID
-    - **操作步骤**：
-      1. 页面加载时调用 API
-      2. API 返回 404 错误
-    - **预期结果**：
-      - 显示友好的错误提示："项目不存在或已被删除"
-      - 提供返回项目列表的链接
-      - 不显示技术错误信息
+    **Scenario Description:**
+    - **Precondition**: User accesses a non-existent project ID
+    - **Operation Steps**:
+      1. Page calls API on load
+      2. API returns 404 error
+    - **Expected Result**:
+      - Display friendly error prompt: "Project doesn't exist or has been deleted"
+      - Provide link to return to project list
+      - Don't display technical error information
 
-### Scenario 3: API 调用失败的情况
+### Scenario 3: API Call Failure Case
 
-    **场景描述：**
-    - **前置条件**：网络错误或服务器错误
-    - **操作步骤**：
-      1. 页面加载时调用 API
-      2. API 调用失败（网络错误或 500 错误）
-    - **预期结果**：
-      - 显示错误提示："加载项目信息失败，请稍后重试"
-      - 提供重试按钮
-      - 记录错误日志便于排查
+    **Scenario Description:**
+    - **Precondition**: Network error or server error
+    - **Operation Steps**:
+      1. Page calls API on load
+      2. API call fails (network error or 500 error)
+    - **Expected Result**:
+      - Display error prompt: "Failed to load project information, please try again later"
+      - Provide retry button
+      - Log errors for troubleshooting
 
 ## Checklist
 
-- [ ] C-001 页面可以正确获取项目基本信息
-- [ ] C-002 项目基本信息正确展示（名称、描述、创建时间、状态等）
-- [ ] C-003 数据加载时显示 loading 状态
-- [ ] C-004 数据加载失败时显示错误提示
-- [ ] C-005 项目不存在时（404）显示友好的错误提示
-- [ ] C-006 权限不足时显示相应的错误提示
-- [ ] C-007 API 调用使用正确的认证 token
-- [ ] C-008 数据格式与后端 API 响应格式一致
+- [ ] C-001 Page can correctly fetch project basic information
+- [ ] C-002 Project basic information displays correctly (name, description, creation time, status, etc.)
+- [ ] C-003 Loading state is shown during data loading
+- [ ] C-004 Error prompt is shown when data loading fails
+- [ ] C-005 Friendly error prompt is shown when project doesn't exist (404)
+- [ ] C-006 Corresponding error prompt is shown when permission is insufficient
+- [ ] C-007 API call uses correct authentication token
+- [ ] C-008 Data format is consistent with backend API response format

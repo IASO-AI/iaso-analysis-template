@@ -1,13 +1,13 @@
-# 归档需求文档
+# Archive Requirement Documents
 
-## 前提条件
+## Prerequisites
 
-- 读取 `.iasospec/changes` 目录下的直接子目录，每一个子目录都是一个change，目录名为 change-id
-- 用户必须指定 change-id，用户可选指定 Task 序号
-- 如果用户没有指定 change-id，需要列出所有change，提醒用户选择，在确定change-id之前不能继续
+- Read the direct subdirectories under `.iasospec/changes`, each subdirectory is a change, the directory name is the change-id
+- User must specify change-id, user can optionally specify Task number
+- If user does not specify change-id, list all changes and prompt user to select, cannot continue until change-id is confirmed
 
-## 执行流程
+## Execution Flow
 
-1. 确定要归档的变更 ID
-2. 使用 `mv` 命令把 `.iasospec/changes/<change-id>` 目录 移动到 `.iasospec/archive/<date>.<change-id>`
-3. `<date>` 是日期，依次递增，比如  `2026-01-01`
+1. Determine the change ID to archive
+2. Use `mv` command to move `.iasospec/changes/<change-id>` directory to `.iasospec/archive/<date>.<change-id>`
+3. `<date>` is the date, incrementally, e.g., `2026-01-01`
