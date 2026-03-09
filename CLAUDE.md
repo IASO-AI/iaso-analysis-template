@@ -42,7 +42,13 @@ Prioritize using existing skills to complete tasks. Read the `.claude/skills` di
 ## Basic Workflow
 
 1. **Environment Check**: Confirm that the `reference/` directory contains files
-2. **Preprocessing**: Convert non-plain-text files (images, etc.) from reference to markdown in `transformed/`. xlsx files do not need conversion. For PDF conversion, evaluate the internal structure; if images dominate, convert to images first and then use image recognition
+2. **Preprocessing**:
+   * Convert non-plain-text files (images, etc.) from reference to markdown in `transformed/`
+   * xlsx files do not need conversion
+   * For PDF conversion, evaluate the internal structure; if images dominate, convert to images first and then use image recognition
+   * For image recognition results saved to `transformed/xx.desc.md`:
+     * File header must include the image's blur level (recognition result credibility) as `0-100%`
+     * Watermarks should not be written to the desc file
 3. **Analysis & Generation**: Generate reports to `output/` based on transformed content
 4. **Chart Generation**: Use skills to generate charts to `generated/` and reference them in reports
 5. **Quality Check**: Verify data accuracy
