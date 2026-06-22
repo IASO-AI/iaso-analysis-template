@@ -15,7 +15,8 @@ This project for researching data and generating analysis reports.
 │   ├── presentation.pdf        # PDF presentation
 │   └── ...                     # Other reference documents (subdirectories supported)
 ├── transformed/                # Parsed markdown resources directory
-│   ├── data.png.md            # Single-page file → flat .md
+│   ├── report.pdf.md          # Single-page text extraction → flat .md
+│   ├── data.png.desc.md       # Single-page image recognition → flat .desc.md
 │   ├── presentation.pdf.desc/ # Multi-page file → subdirectory
 │   │   ├── page-1.md          # Page-by-page markdown
 │   │   └── page-2.md
@@ -32,7 +33,7 @@ This project for researching data and generating analysis reports.
 
 **Directory Descriptions:**
 - **reference/**: Stores original reference files (Excel, Word, PDF, images, etc.), supports subdirectories
-- **transformed/**: Stores markdown parsing results of files in reference. Single-page files use flat naming `<filename>.<ext>.md`; multi-page files (PDF, DOCX, PPT, etc.) use subdirectory `<filename>.<ext>.desc/page-N.md`
+- **transformed/**: Stores markdown parsing results of files in reference. Single-page text extraction uses `<filename>.<ext>.md`; image recognition results use `<filename>.<ext>.desc.md`; multi-page files (PDF, DOCX, PPT, etc.) use subdirectory `<filename>.<ext>.desc/page-N.md`
 - **generated/**: Stores generated charts and visualizations. Non-text files (images, etc.) must be accompanied by `.desc.md` description files that describe content only without analysis
 - **temp/**: Stores temporary code scripts and other temporary files, subdirectories can be created inside
 - **output/**: Stores the generated final report
@@ -48,7 +49,6 @@ Prioritize using existing skills to complete tasks. Read the `.claude/skills` di
    * Check `transformed/` first: if a converted result already exists for a file, read it directly and skip re-conversion
    * For files that cannot be directly parsed (scanned PDFs, images, etc.), convert them to markdown in `transformed/` first, then read the content from `transformed/`
    * For image extraction, prioritize checking installed skills for AI-capable ones (e.g., `moonshot-helper`); check `.env` for API key configuration (`MOONSHOT_API_KEY`, etc.)
-   * Convert non-plain-text files (images, etc.) from reference to markdown in `transformed/`
    * xlsx files do not need conversion
    * For PDF conversion, evaluate the internal structure; if images dominate, convert to images first and then use image recognition
    * For image recognition results saved to `transformed/xx.desc.md`:
@@ -56,7 +56,7 @@ Prioritize using existing skills to complete tasks. Read the `.claude/skills` di
      * Watermarks should not be written to the desc file
    * For multi-page files (PDF, DOCX, PPT, etc.), each page converts to a separate markdown file under `transformed/<filename>.<ext>.desc/`:
      * Format: `transformed/<filename>.<ext>.desc/page-1.md`, `page-2.md`, ...
-     * Single-page files keep the flat naming: `transformed/<filename>.<ext>.md`
+     * Single-page text extraction keeps the flat naming: `<filename>.<ext>.md`; image recognition results use `<filename>.<ext>.desc.md`
 3. **Analysis & Generation**: Generate reports to `output/` based on transformed content
 4. **Chart Generation**: Use skills to generate charts to `generated/` and reference them in reports
 5. **Quality Check**: Verify data accuracy
