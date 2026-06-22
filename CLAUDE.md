@@ -57,6 +57,7 @@ Prioritize using existing skills to complete tasks. Read the `.claude/skills` di
    * For multi-page files (PDF, DOCX, PPT, etc.), each page converts to a separate markdown file under `transformed/<filename>.<ext>.desc/`:
      * Format: `transformed/<filename>.<ext>.desc/page-1.md`, `page-2.md`, ...
      * Single-page text extraction keeps the flat naming: `<filename>.<ext>.md`; image recognition results use `<filename>.<ext>.desc.md`
+     * For image-to-text conversion of multiple pages, process in parallel with 3-6 concurrent requests
 3. **Analysis & Generation**: Generate reports to `output/` based on transformed content
 4. **Chart Generation**: Use skills to generate charts to `generated/` and reference them in reports
 5. **Quality Check**: Verify data accuracy
