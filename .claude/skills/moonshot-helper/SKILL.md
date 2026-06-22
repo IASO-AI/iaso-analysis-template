@@ -234,7 +234,7 @@ client = MoonshotClient(
 - `moonshot-v1-32k` - Long context model
 - `moonshot-v1-8k-vision-preview` - Vision model
 
-> **Note for image recognition:** `kimi-k2.6` only supports `temperature=1`. When using other models for image tasks, `temperature=0.1-0.3` is recommended for factual extraction.
+> **Note for image recognition:** `kimi-k2.6` only supports `temperature=1`.
 
 ## Error Handling
 
