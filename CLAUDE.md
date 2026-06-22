@@ -43,12 +43,18 @@ Prioritize using existing skills to complete tasks. Read the `.claude/skills` di
 
 1. **Environment Check**: Confirm that the `reference/` directory contains files
 2. **Preprocessing**:
+   * Check `transformed/` first: if a converted result already exists for a file, read it directly and skip re-conversion
+   * For files that cannot be directly parsed (scanned PDFs, images, etc.), convert them to markdown in `transformed/` first, then read the content from `transformed/`
+   * For image extraction, prioritize checking installed skills for AI-capable ones (e.g., `moonshot-helper`); check `.env` for API key configuration (`MOONSHOT_API_KEY`, etc.)
    * Convert non-plain-text files (images, etc.) from reference to markdown in `transformed/`
    * xlsx files do not need conversion
    * For PDF conversion, evaluate the internal structure; if images dominate, convert to images first and then use image recognition
    * For image recognition results saved to `transformed/xx.desc.md`:
      * File header must include the image's blur level (recognition result credibility) as `0-100%`
      * Watermarks should not be written to the desc file
+   * For multi-page files (PDF, DOCX, PPT, etc.), each page converts to a separate markdown file under `transformed/<filename>.<ext>.desc/`:
+     * Format: `transformed/<filename>.<ext>.desc/page-1.md`, `page-2.md`, ...
+     * Single-page files keep the flat naming: `transformed/<filename>.<ext>.md`
 3. **Analysis & Generation**: Generate reports to `output/` based on transformed content
 4. **Chart Generation**: Use skills to generate charts to `generated/` and reference them in reports
 5. **Quality Check**: Verify data accuracy
