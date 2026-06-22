@@ -49,7 +49,7 @@ Prioritize using existing skills to complete tasks. Read the `.claude/skills` di
    * Check `transformed/` first: if a converted result already exists for a file, read it directly and skip re-conversion
    * For files that cannot be directly parsed (scanned PDFs, images, etc.), convert them to markdown in `transformed/` first, then read the content from `transformed/`
    * Do not use traditional image processing methods (OCR libraries, PIL, pdfplumber, etc.) on PDFs or images; once a file is identified as non-text-extractable, always use visual-to-markdown conversion via installed AI skills
-   * For image extraction, prioritize checking installed skills for AI-capable ones (e.g., `moonshot-helper`); check `.env` for API key configuration (`MOONSHOT_API_KEY`, etc.)
+   * For image extraction, prioritize checking installed skills for AI-capable ones (e.g., `moonshot-helper`); check `.env` for API key configuration — key names may vary (e.g., `MOONSHOT_API_KEY`, `KIMI_API_KEY`, etc.) and may not match the skill's expected variable name exactly, but serve the same purpose
    * xlsx files do not need conversion
    * For PDF conversion, evaluate the internal structure; if images dominate, convert to images first and then use image recognition
    * For image recognition results saved to `transformed/xx.desc.md`:
