@@ -15,8 +15,10 @@ This project for researching data and generating analysis reports.
 │   ├── presentation.pdf        # PDF presentation
 │   └── ...                     # Other reference documents (subdirectories supported)
 ├── transformed/                # Parsed markdown resources directory
-│   ├── data.png.md            # Textual description of data file
-│   ├── presentation.pdf.md     # Textual description of PDF file
+│   ├── data.png.md            # Single-page file → flat .md
+│   ├── presentation.pdf.desc/ # Multi-page file → subdirectory
+│   │   ├── page-1.md          # Page-by-page markdown
+│   │   └── page-2.md
 │   └── ...                     # One-to-one correspondence with reference structure
 ├── generated/                  # Generated derivative content directory
 │   ├── chart_*.png             # Generated charts
@@ -30,7 +32,7 @@ This project for researching data and generating analysis reports.
 
 **Directory Descriptions:**
 - **reference/**: Stores original reference files (Excel, Word, PDF, images, etc.), supports subdirectories
-- **transformed/**: Stores markdown parsing results of files in reference, filenames remain consistent with `.md` suffix added
+- **transformed/**: Stores markdown parsing results of files in reference. Single-page files use flat naming `<filename>.<ext>.md`; multi-page files (PDF, DOCX, PPT, etc.) use subdirectory `<filename>.<ext>.desc/page-N.md`
 - **generated/**: Stores generated charts and visualizations. Non-text files (images, etc.) must be accompanied by `.desc.md` description files that describe content only without analysis
 - **temp/**: Stores temporary code scripts and other temporary files, subdirectories can be created inside
 - **output/**: Stores the generated final report
