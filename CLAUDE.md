@@ -41,6 +41,7 @@ This project for researching data and generating analysis reports.
 ## Key Skills
 
 Prioritize using existing skills to complete tasks. Read the `.claude/skills` directory.
+For complex tasks, use Workflow (multi-agent orchestration) or team collaboration to divide and conquer.
 
 ## Basic Workflow
 
